@@ -15,4 +15,9 @@ app.get('/livros', (req, res) => {
   res.status(200).json(livros);
 });
 
+app.post('/livros', (req, res) => {
+  livros.push(req.body);
+  res.status(201);
+});
+
 export default app;
