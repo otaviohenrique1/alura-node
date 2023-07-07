@@ -74,6 +74,21 @@ class LivroController {
       });
     }
   }
+
+  static listarLivroPorEditora = (req, res) => {
+    const edirora = req.query.editora;
+    livros.find({ 'editora': edirora })
+      .then((livro) => {
+        res.status(200).json(livro);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({
+          erro: "Editora do livro não localizada.",
+          message: `${error.message}`,
+        });
+      });
+  }
 }
 
 export default LivroController;
